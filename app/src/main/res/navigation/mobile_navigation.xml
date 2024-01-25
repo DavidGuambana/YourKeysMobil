@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.franklin.interfaces.activity.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.franklin.interfaces.activity.ui.perfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil">
+        <action
+            android:id="@+id/action_perfilFragment_to_editPerfilFragment"
+            app:destination="@id/edit_perfil" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_autos"
+        android:name="com.franklin.interfaces.activity.ui.autos.ListaAutosFragment"
+        android:label="@string/menu_autos"
+        tools:layout="@layout/fragment_lista_autos" />
+
+    <fragment
+        android:id="@+id/edit_perfil"
+        android:name="com.franklin.interfaces.activity.ui.editPerfil.EditPerfilFragment"
+        tools:layout="@layout/fragment_edit_perfil" />
+
+    <fragment
+        android:id="@+id/nav_historial"
+        android:name="com.franklin.interfaces.activity.ui.historial.HistorialFragment"
+        android:label="@string/menu_historial"
+        tools:layout="@layout/fragment_historial" />
+</navigation>

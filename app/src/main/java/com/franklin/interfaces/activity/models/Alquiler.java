@@ -1,5 +1,6 @@
 package com.franklin.interfaces.activity.models;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class Alquiler {
+public class Alquiler implements Serializable {
     private int id_alquiler;
     private int id_cliente;
     private int id_auto;

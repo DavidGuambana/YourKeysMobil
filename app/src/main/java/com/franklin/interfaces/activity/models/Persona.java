@@ -1,10 +1,11 @@
 package com.franklin.interfaces.activity.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Persona {
+public class Persona implements Serializable {
     private int id_persona;
     private String cedula;
     private String nombre1;

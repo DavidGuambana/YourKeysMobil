@@ -15,10 +15,10 @@ import org.json.JSONObject;
 
 public class serBuscar {
 
-        public interface ServiceCallback {
-            void onSuccess(JSONObject response);
-            void onError(String errorMessage);
-        }
+    public interface ServiceCallback {
+        void onSuccess(Object response);
+        void onError(String errorMessage);
+    }
 
         private Context context;
 
@@ -27,7 +27,7 @@ public class serBuscar {
         }
 
         public void buscar(String url, final ServiceCallback callback) {
-            JsonObjectRequest request = new JsonObjectRequest(url, null,
+            JsonObjectRequest request = new JsonObjectRequest(new URL().endPoint+url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

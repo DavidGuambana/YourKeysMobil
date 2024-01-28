@@ -1,6 +1,8 @@
 package com.franklin.interfaces.activity.models;
 
-public class Usuario_Rol {
+import java.io.Serializable;
+
+public class Usuario_Rol implements Serializable {
     private int id_usuario_rol;
     private int id_usuario;
     private int id_rol;

@@ -31,12 +31,11 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
 
+    public static Persona persona;
     EditText username,password;
     serListar service;
     final Context context = this;
     FECHA fecha = new FECHA();
-
-    ArrayList<Persona> personas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.txtPassword);
 
         Button btnIngresar = findViewById(R.id.btnIngresar);
-        btnIngresar.setOnClickListener(l-> abrirInicio());
+        btnIngresar.setOnClickListener(l-> loguear());
 
         Button btnRegister = findViewById(R.id.btnRegistrarse);
         btnRegister.setOnClickListener(l-> abrirRegistro());
@@ -64,7 +63,29 @@ public class Login extends AppCompatActivity {
             service.listar("personas", new serListar.ServiceCallback() {
                 @Override
                 public void onSuccess(JSONArray response) {
-                    listarPersonas(response);
+                    List<Persona> personas = listarPersonas(response);
+                    try {
+                        if (personas != null) {
+                            for (int p = 0; p < personas.size(); p++) {
+                                if  (personas.get(p).getUsuario() != null){
+                                    if (personas.get(p).getUsuario().getUsername().equals(username.getText().toString()) &&
+                                            personas.get(p).getUsuario().getPassword().equals(password.getText().toString())) {
+                                        for (int q = 0; q < personas.get(p).getUsuarios_roles().size(); q++) {
+                                            if (personas.get(p).getUsuarios_roles().get(q).getId_rol() == 3) {
+                                                persona = personas.get(p);
+                                                abrirInicio(personas.get(p)); // Abre otra activity
+                                                Toast.makeText(context, "¡Bienvenido, " + personas.get(p).getNombre1() + " " + personas.get(p).getApellido1() + "!", Toast.LENGTH_LONG).show();
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            Toast.makeText(context, "¡Usuario no encontrado!", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (Exception e){
+                        Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 @Override
@@ -75,7 +96,8 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public void listarPersonas(JSONArray response) {
+    public List<Persona> listarPersonas(JSONArray response) {
+        List<Persona> personas = new ArrayList<>();
         Persona persona;
         Cliente cliente;
         List<Alquiler> alquileres;
@@ -86,7 +108,6 @@ public class Login extends AppCompatActivity {
 
         try {
             if (response.length() > 0) {
-                personas = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
                     JSONObject objPer = response.getJSONObject(i);
                     persona = new Persona();
@@ -156,7 +177,7 @@ public class Login extends AppCompatActivity {
 
                         }
                     }
-                    /*
+
                     usuario = new Usuario();
                     JSONArray usuariosArray = objPer.getJSONArray("usuarios");
                     if (usuariosArray.length() > 0) {
@@ -183,23 +204,16 @@ public class Login extends AppCompatActivity {
                             persona.setUsuarios_roles(users_roles);
                         }
                     }
-
-                     */
                     personas.add(persona);
                 }
-
-                //Toast.makeText(context,"Personas: "+ personas.size(), Toast.LENGTH_LONG).show();
-                Toast.makeText(context,"Clientes: "+ personas.get(0).getAlquileres(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(context,"Usuarios: "+ personas.size(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(context,"Alquileres: "+ personas.size(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(context,"Devoluciones: "+ personas.size(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(context,"Usuarios_Roles: "+ personas.size(), Toast.LENGTH_LONG).show();
-
+                return personas;
+            } else{
+                return null;
             }
         } catch (JSONException e) {
             Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();
+            return null;
         }
-
     }
 
     public void abrirRegistro(){
@@ -207,8 +221,9 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public void abrirInicio(){
+    public void abrirInicio(Persona persona){
         Intent intent = new Intent(this, InicioActivity.class);
+        intent.putExtra("objeto_persona",persona);
         startActivity(intent);
         finish();
     }

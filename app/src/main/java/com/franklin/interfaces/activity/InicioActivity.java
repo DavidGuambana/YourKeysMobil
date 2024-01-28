@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.franklin.interfaces.MainActivity;
 import com.franklin.interfaces.R;
-import com.franklin.interfaces.activity.ui.historial.HistorialFragment;
-import com.franklin.interfaces.activity.ui.login.Login;
+import com.franklin.interfaces.activity.models.Persona;
+import com.franklin.interfaces.activity.ui.autos.AutosAdapter;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -57,6 +60,24 @@ public class InicioActivity extends AppCompatActivity {
         Button salir = headerView.findViewById(R.id.btnCerrarSesion);
         salir.setOnClickListener(l -> salir());
 
+        Intent intent = getIntent();
+
+        // Verifica si hay datos extras en el Intent y obtén el objeto Usuario
+
+        if (intent != null && intent.hasExtra("objeto_persona")) {
+            Persona persona = (Persona) intent.getSerializableExtra("objeto_persona");
+            TextView name = headerView.findViewById(R.id.Name);
+            TextView username = headerView.findViewById(R.id.Username);
+            TextView email = headerView.findViewById(R.id.Email);
+            ImageView imagen = headerView.findViewById(R.id.Imagen);
+
+            name.setText(persona.getNombre1()+" "+persona.getApellido1()+"");
+            username.setText("("+persona.getUsuario().getUsername()+")");
+            email.setText(persona.getCorreo()+"");
+            //cargarImagenConGlide(persona.getUrl_imagen(),imagen);
+        }
+
+
     }
 
     public void salir(){
@@ -76,6 +97,13 @@ public class InicioActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_inicio);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void cargarImagenConGlide(String urlImagen, ImageView imageView) {
+        Glide.with(this)
+                .load((urlImagen != null && !urlImagen.isEmpty()) ? urlImagen : null)
+                .dontTransform()
+                .into(imageView);
     }
 
 }

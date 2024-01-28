@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.franklin.interfaces.R;
+import com.franklin.interfaces.activity.services.serListar;
 import com.franklin.interfaces.databinding.FragmentAutosBinding;
 
 public class AutosFragment extends Fragment {
@@ -27,6 +30,18 @@ public class AutosFragment extends Fragment {
         final TextView textView = binding.textAutos;
         autosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        /*
+        context = getActivity().getApplicationContext();
+        tlAlquileres = view.findViewById(R.id.tlAlquileres);
+        tlReservas = view.findViewById(R.id.tlReservas);
+        service = new serListar(context);
+        getAlquileres();
+         */
     }
 
     @Override

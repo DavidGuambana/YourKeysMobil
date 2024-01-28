@@ -1,10 +1,11 @@
 package com.franklin.interfaces.activity.models;
 
+import java.io.Serializable;
 import java.util.Date;
-public class Devolucion {
+public class Devolucion implements Serializable {
     private int id_devolucion;
     private int id_alquiler;
-    private Date fecha = new Date();
+    private Date fecha;
 
     public int getId_devolucion() {
         return id_devolucion;

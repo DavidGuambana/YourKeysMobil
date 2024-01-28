@@ -1,9 +1,10 @@
 package com.franklin.interfaces.activity.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente {
+public class Cliente implements Serializable {
     private int id_cliente;
     private int id_persona;
     private String licencia;

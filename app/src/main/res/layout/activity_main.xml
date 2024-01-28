@@ -51,14 +51,14 @@
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintBottom_toTopOf="@+id/btnEnviar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivAppLogo" />
 
         <!-- Botones de inicio de sesión y registro -->
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnEnviar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -87,7 +87,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/btnEnviar" />
 
         <!-- Mensaje "¿Necesitas ayuda?" -->
         <TextView

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Estilo específico para el TextView en el Spinner -->
+    <style name="EstiloDelTextViewEnSpinner">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/principal</item> <!-- Cambia este valor al color deseado -->
+        <item name="android:gravity">center_vertical</item>
+        <!-- Otros atributos de estilo que desees agregar -->
+    </style>
+
     <style name="Widget.AppCompat.NavigationView" parent="Widget.Design.NavigationView">
         <!-- Otros atributos de estilo aquí -->
 

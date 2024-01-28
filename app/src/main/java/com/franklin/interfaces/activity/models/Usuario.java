@@ -1,6 +1,8 @@
 package com.franklin.interfaces.activity.models;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private int id_usuario;
     private int id_persona;
     private String username;

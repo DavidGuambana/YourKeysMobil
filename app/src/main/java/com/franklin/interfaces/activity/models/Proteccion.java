@@ -1,6 +1,8 @@
 package com.franklin.interfaces.activity.models;
 
-public class Proteccion {
+import java.io.Serializable;
+
+public class Proteccion implements Serializable {
     private int id_proteccion;
     private String nombre;
     private double precio;

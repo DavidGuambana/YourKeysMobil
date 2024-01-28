@@ -6,221 +6,225 @@
         android:layout_height="match_parent"
         tools:context=".activity.ui.reservas.ReservasFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#F6F5F5"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        tools:context=".InformacionAuto">
+
+        <TextView
+            android:id="@+id/tvModeloMarca"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Chevrolet"
+            android:textAlignment="center"
+            android:textColor="@color/secundario"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-            <!-- FrameLayout para el fondo -->
+        <ImageView
+            android:id="@+id/ivImagen"
+            android:layout_width="match_parent"
+            android:layout_height="172dp" />
 
-            <ImageView
-                android:id="@+id/imagen_auto"
-                android:layout_width="124dp"
-                android:layout_height="110dp"
-                android:layout_gravity="center"
-                android:src="@drawable/perfil"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="172dp"
-                tools:ignore="MissingConstraints" />
-
-            <FrameLayout
-                android:id="@+id/frameBackground"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/background_gradient3"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tituloReserva"
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Reserva de auto"
-                    android:textColor="@android:color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
-
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.18" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvLabelCedula"
-                android:layout_width="141dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="56dp"
-                android:layout_marginEnd="70dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="$ 15.50/dia"
+                android:id="@+id/tvPrecio"
+                android:layout_width="202dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:text="$0,00"
                 android:textAlignment="textEnd"
                 android:textColor="@color/principal"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/frameBackground" />
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvSeguro"
-                android:layout_width="0dp"
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="70dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Tipo de seguro:"
-                android:textColor="@color/principal"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="291dp"
-                tools:ignore="MissingConstraints" />
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:text="/dia"
+                android:textAlignment="textStart"
+                android:textSize="16sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="275dp"
-                android:layout_height="63dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSeguro"
-                app:layout_constraintVertical_bias="0.019" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvDesde"
-                android:layout_width="131dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="70dp"
-                android:text="Desde:"
-                android:textAlignment="center"
-                android:textColor="@color/principal"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="402dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="276dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvHasta"
-                android:layout_width="129dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="70dp"
-                android:text="Hasta:"
-                android:textAlignment="center"
-                android:textColor="@color/principal"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tvDesde"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="402dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvDias"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="70dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Dias: 0"
-                android:textAlignment="center"
-                android:textColor="@color/principal"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tdHasta"
-                tools:ignore="MissingConstraints" />
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Desde:"
+                    android:textColor="@color/secundario"
+                    android:textSize="17sp" />
 
-            <EditText
-                android:id="@+id/tdDesde"
-                android:layout_width="130dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:ems="10"
-                android:inputType="date"
-                android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@+id/tvDesde"
-                tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-                tools:layout_editor_absoluteX="69dp" />
+                <EditText
+                    android:id="@+id/txtDesde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:textColor="@color/principal"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/tdHasta"
-                android:layout_width="129dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:ems="10"
-                android:inputType="date"
-                android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@+id/tvHasta"
-                tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-                tools:layout_editor_absoluteX="212dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvTotal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="70dp"
-                android:text="Total: $0"
-                android:textAlignment="viewStart"
-                android:textColor="@color/principal"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="578dp" />
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Hasta:"
+                    android:textColor="@color/secundario"
+                    android:textSize="17sp" />
 
-            <Button
-                android:id="@+id/btnFinalizar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:text="Finalizar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/space2"
-                app:layout_constraintVertical_bias="0.0" />
+                <EditText
+                    android:id="@+id/txtHasta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:textColor="@color/principal"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-            <Space
-                android:id="@+id/space1"
-                android:layout_width="193dp"
-                android:layout_height="23dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDias"
-                tools:ignore="DuplicateIds" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:orientation="horizontal">
 
-            <Space
-                android:id="@+id/space2"
-                android:layout_width="193dp"
-                android:layout_height="23dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotal"
-                tools:ignore="DuplicateIds" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Dias:"
+                    android:textColor="@color/secundario"
+                    android:textSize="17sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvDias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:text="0 dias"
+                    android:textColor="@color/principal"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Protección:"
+                    android:textColor="@color/secundario"
+                    android:textSize="17sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_proteccion"
+                    style="@style/EstiloDelTextViewEnSpinner"
+                    android:layout_width="243dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:orientation="horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Total:"
+                    android:textColor="@color/secundario"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvEstado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:text="$0.00"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="273dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="80dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Enviar"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
     </ScrollView>

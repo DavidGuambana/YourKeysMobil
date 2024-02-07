@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +24,7 @@ public class Register extends AppCompatActivity {
     EditText licencia,nombre,apellido,username,password;
     serCrear service;
     final Context context = this;
+    CheckBox ver_pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +42,24 @@ public class Register extends AppCompatActivity {
         apellido = findViewById(R.id.apellido);
         username = findViewById(R.id.usermane);
         password = findViewById(R.id.txtPassword);
+        ver_pass = findViewById(R.id.verPass);
 
         Button ingresar = findViewById(R.id.btnIngresar);
         ingresar.setOnClickListener(l-> registrar());
+
+        ver_pass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Cambia el método de transformación del texto del EditText
+                if (isChecked) {
+                    // CheckBox seleccionado, muestra el texto normal
+                    password.setTransformationMethod(null);
+                } else {
+                    // CheckBox no seleccionado, muestra puntos para ocultar el texto
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
     }
 
     public void registrar() {

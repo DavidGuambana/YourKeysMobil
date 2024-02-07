@@ -266,6 +266,7 @@ public class ReservasFragment extends Fragment{
                     JSO_alquiler.put("fecha_res",StringToDate(dateToString(alquiler.getFecha_res())));
                     JSO_alquiler.put("fecha_reg",StringToDate(dateToString(alquiler.getFecha_reg())));
                 }
+                JSO_alquiler.put("id_empleado", 1);
                 JSO_alquiler.put("id_cliente", Login.persona.getCliente().getId_cliente());
                 JSO_alquiler.put("id_auto", auto.getId_auto());
                 JSO_alquiler.put("id_proteccion", proteccion.getId_proteccion());

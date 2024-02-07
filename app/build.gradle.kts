@@ -42,6 +42,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.5.3")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.android.volley:volley:1.2.1")
+    //implementation ("net.gotev:uploadservice:3.4.2")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("androidx.fragment:fragment:1.3.0")

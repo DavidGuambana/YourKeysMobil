@@ -2,14 +2,22 @@ package com.franklin.interfaces.activity.ui.editPerfil;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.provider.MediaStore;
+import android.text.method.PasswordTransformationMethod;
+import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +35,8 @@ import com.franklin.interfaces.activity.services.RUTA;
 import com.franklin.interfaces.activity.services.serActualizar;
 import com.franklin.interfaces.activity.services.serCrear;
 import com.franklin.interfaces.activity.ui.login.Login;
+import com.franklin.interfaces.activity.utils.FECHA;
+import com.franklin.interfaces.activity.utils.GALERIA;
 import com.franklin.interfaces.databinding.FragmentEditPerfilBinding;
 import com.franklin.interfaces.databinding.FragmentPerfilBinding;
 import com.squareup.picasso.Picasso;
@@ -34,6 +44,9 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,14 +55,14 @@ import java.util.Locale;
 
 public class EditPerfilFragment extends Fragment {
     private FragmentPerfilBinding binding;
+    FECHA fecha = new FECHA();
     private NavController navController;
     Context context;
     private EditText username,password, nombre1, nombre2, apellido1,
             apellido2, telefono, correo, direccion;
     private TextView licencia,fecha_nac;
-    private ImageView foto, btn_abrir_foto, btn_calendar;
+    private ImageView foto, btn_abrir_foto, btn_calendar, vision_password;
     private Button btn_guardar;
-    private Spinner spin_tipo_licencia;
     private serActualizar service;
 
 
@@ -67,13 +80,13 @@ public class EditPerfilFragment extends Fragment {
         context = getActivity().getApplicationContext();
         service = new serActualizar(context);
 
-        spin_tipo_licencia = view.findViewById(R.id.spinner_tipo_licencia);
         username = view.findViewById(R.id.tv_user_name);
         password = view.findViewById(R.id.tv_password);
         foto = view.findViewById(R.id.iv_foto);
         btn_abrir_foto = view.findViewById(R.id.btn_abrir_foto);
         btn_calendar = view.findViewById(R.id.btn_ver_calendar);
         btn_guardar = view.findViewById(R.id.btnGuardar);
+        vision_password = view.findViewById(R.id.btn_ver);
         licencia = view.findViewById(R.id.tv_licencia);
         nombre1 = view.findViewById(R.id.tv_nombre1);
         nombre2 = view.findViewById(R.id.tv_nombre2);
@@ -85,8 +98,22 @@ public class EditPerfilFragment extends Fragment {
         direccion = view.findViewById(R.id.tv_direccion);
         cargarDatos();
         btn_calendar.setOnClickListener(l-> abrirCalendario());
-        btn_abrir_foto.setOnClickListener(l->abrir_galeria());
+        btn_abrir_foto.setOnClickListener(l->GALERIA.abrirGaleria(getActivity()));
         btn_guardar.setOnClickListener(l-> guardar());
+        vision_password.setOnClickListener(l-> ver_password());
+    }
+
+    public void ver_password(){
+            TransformationMethod currentMethod = password.getTransformationMethod();
+            if (currentMethod instanceof PasswordTransformationMethod) {
+                // Cambia a la visibilidad de texto normal
+                password.setTransformationMethod(null);
+                vision_password.setImageResource(R.drawable.ojo_oculto);
+            } else {
+                // Cambia a la visibilidad de puntos
+                password.setTransformationMethod(new PasswordTransformationMethod());
+                vision_password.setImageResource(R.drawable.ojo_visible);
+            }
     }
 
     public void guardar() {
@@ -105,6 +132,15 @@ public class EditPerfilFragment extends Fragment {
         } else {
             JSONObject JSB_persona = new JSONObject();
             try {
+                Login.persona.setNombre1(nombre1.getText().toString());
+                Login.persona.setNombre2(nombre2.getText().toString());
+                Login.persona.setApellido1(apellido1.getText().toString());
+                Login.persona.setApellido2(apellido2.getText().toString());
+                Login.persona.setTelefono(telefono.getText().toString());
+                Login.persona.setDireccion(direccion.getText().toString());
+                Login.persona.setFecha_nac(fecha.stringToDate(fecha_nac.getText().toString()));
+                Login.persona.setCorreo(correo.getText().toString());
+
                 JSB_persona.put("cedula", licencia.getText().toString());
                 JSB_persona.put("nombre1", nombre1.getText().toString());
                 JSB_persona.put("nombre2", nombre2.getText().toString());
@@ -130,6 +166,9 @@ public class EditPerfilFragment extends Fragment {
                                         if (response != null) {
                                             JSONObject JSB_usuario = new JSONObject();
                                             try {
+                                                Login.persona.getUsuario().setUsername(username.getText().toString());
+                                                Login.persona.getUsuario().setPassword(password.getText().toString());
+
                                                 JSB_usuario.put("id_persona", Login.persona.getUsuario().getId_persona());
                                                 JSB_usuario.put("username", username.getText().toString());
                                                 JSB_usuario.put("password", password.getText().toString());
@@ -137,6 +176,7 @@ public class EditPerfilFragment extends Fragment {
                                                     @Override
                                                     public void onSuccess(Object response) {
                                                         if (response != null) {
+                                                            abrirPefil();
                                                             Toast.makeText(context, "Tu cuenta ha sido actualizada exitosamente!", Toast.LENGTH_LONG).show();
                                                         } else{
                                                             Toast.makeText(context, "Tu cuenta no pudo ser actualizada!", Toast.LENGTH_LONG).show();
@@ -181,9 +221,6 @@ public class EditPerfilFragment extends Fragment {
         }
     }
 
-    private void abrir_galeria(){
-
-    }
 
     private void cargarDatos(){
         licencia.setText(Login.persona.getCedula());
@@ -264,6 +301,16 @@ public class EditPerfilFragment extends Fragment {
         navController.navigate(R.id.nav_perfil, bundle);
     }
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private static File archivo_imagen;
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Llama al método onActivityResult de la clase GALERIA
+        GALERIA.onActivityResult(requestCode, resultCode, data, foto);
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

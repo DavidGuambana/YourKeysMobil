@@ -31,7 +31,7 @@ public class PerfilFragment extends Fragment {
 
     private NavController navController;
     private ReservasFragment fecha = new ReservasFragment();
-    private TextView licencia, tipo_licencia, nombres, apellidos, fecha_nac,
+    private TextView licencia, nombres, apellidos, fecha_nac, username,
             telefono, correo, direccion, fecha_reg;
     private ImageView foto, btn_Editar;
     Context context;
@@ -49,10 +49,10 @@ public class PerfilFragment extends Fragment {
         navController = Navigation.findNavController(view);
         context = getActivity().getApplicationContext();
 
+        username = view.findViewById(R.id.tv_username);
         foto = view.findViewById(R.id.iv_foto);
         btn_Editar = view.findViewById(R.id.btn_editar);
         licencia = view.findViewById(R.id.tv_licencia);
-        tipo_licencia = view.findViewById(R.id.tv_tipo_licencia);
         nombres = view.findViewById(R.id.tv_nombre1);
         apellidos = view.findViewById(R.id.tv_apellido1);
         fecha_nac = view.findViewById(R.id.tv_fecha_nac);
@@ -66,8 +66,8 @@ public class PerfilFragment extends Fragment {
 
     private void cargarDatos(){
         Persona persona = Login.persona;
+        username.setText(persona.getUsuario().getUsername());
         licencia.setText(persona.getCedula());
-        tipo_licencia.setText(persona.getCliente().getTipo_licencia());
         nombres.setText(persona.getNombre1()+" "+persona.getNombre2());
         apellidos.setText(persona.getApellido1()+" "+persona.getApellido2());
         fecha_nac.setText(dateToString(persona.getFecha_nac()));

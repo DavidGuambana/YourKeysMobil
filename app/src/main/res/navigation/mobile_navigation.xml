@@ -15,22 +15,18 @@
         android:id="@+id/nav_perfil"
         android:name="com.franklin.interfaces.activity.ui.perfil.PerfilFragment"
         android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_perfil">
-        <action
-            android:id="@+id/action_perfilFragment_to_editPerfilFragment"
-            app:destination="@id/edit_perfil" />
-    </fragment>
+        tools:layout="@layout/fragment_perfil"/>
 
+    <fragment
+        android:id="@+id/nav_edit_perfil"
+        android:name="com.franklin.interfaces.activity.ui.editPerfil.EditPerfilFragment"
+        android:label="Editar Perfil"
+        tools:layout="@layout/fragment_lista_autos" />
     <fragment
         android:id="@+id/nav_autos"
         android:name="com.franklin.interfaces.activity.ui.autos.ListaAutosFragment"
         android:label="Autos disponibles"
         tools:layout="@layout/fragment_lista_autos" />
-
-    <fragment
-        android:id="@+id/edit_perfil"
-        android:name="com.franklin.interfaces.activity.ui.editPerfil.EditPerfilFragment"
-        tools:layout="Editar perfil" />
 
     <fragment
         android:id="@+id/nav_historial"
@@ -49,5 +45,4 @@
         android:name="com.franklin.interfaces.activity.ui.reservas.ReservasFragment"
         android:label="Reserva"
         tools:layout="@layout/fragment_reservas" />
-
 </navigation>

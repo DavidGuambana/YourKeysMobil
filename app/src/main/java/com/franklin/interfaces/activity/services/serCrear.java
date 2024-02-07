@@ -23,7 +23,7 @@ public class serCrear {
     }
 
     public void crear(String url, JSONObject jsonBody, final ServiceCallback callback) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, new URL().endPoint+url, jsonBody,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, new RUTA().endPoint+url, jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

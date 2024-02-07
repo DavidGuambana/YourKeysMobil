@@ -24,7 +24,7 @@ public class serActualizar {
     }
 
     public void actualizar(String url, JSONObject jsonBody, final ServiceCallback callback) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, jsonBody,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, new RUTA().endPoint+url, jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

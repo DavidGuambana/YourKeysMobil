@@ -6,274 +6,298 @@
     android:layout_height="match_parent"
     tools:context=".activity.ui.perfil.PerfilFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
 
         <!-- FrameLayout para el fondo -->
+
         <FrameLayout
             android:id="@+id/frameBackground"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/background_gradient3"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="234dp"
+            android:background="@drawable/background_gradient3">
 
             <!-- Foto de perfil -->
-            <ImageView
-                android:id="@+id/image_perfil"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="0dp"
-                android:src="@drawable/perfil" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="213dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_foto"
+                    android:layout_width="121dp"
+                    android:layout_height="113dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/perfil" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Username"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <ImageView
+                    android:id="@+id/btn_editar"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    android:src="@drawable/edit" />
+
+            </LinearLayout>
 
         </FrameLayout>
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.23" />
-
-        <Button
-            android:id="@+id/btnSeleccionarFoto"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="Seleccionar Foto"
-            app:layout_constraintEnd_toStartOf="@+id/btnEditarPerfil"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-
-        <Button
-            android:id="@+id/btnEditarPerfil"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="Editar Perfil"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnSeleccionarFoto"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
         <TextView
-            android:id="@+id/tvLabelCedula"
-            android:layout_width="0dp"
+            android:id="@+id/tvLabelCedula5"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Licencia:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_licencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Cédula:"
-            android:textColor="@color/principal"
+            android:text="0000000000"
+            android:textColor="@color/texto"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEditarPerfil" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvNumeroCedula"
-            android:layout_width="0dp"
+            android:id="@+id/tvLabelCedula13"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
-            android:text="0106915663"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLabelCedula" />
+            android:fontFamily="sans-serif-light"
+            android:text="Tipo de licencia:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tvPrimerNombre"
-            android:layout_width="0dp"
+            android:id="@+id/tv_tipo_licencia"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Primer Nombre:"
-            android:textColor="@color/principal"
+            android:text="Tipo"
+            android:textColor="@color/texto"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNumeroCedula" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/PrimerNombre"
-            android:layout_width="0dp"
+            android:id="@+id/tvLabelCedula12"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
-            android:text="Juan"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrimerNombre" />
+            android:fontFamily="sans-serif-light"
+            android:text="Nombres:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tvSegundoNombre"
-            android:layout_width="0dp"
+            android:id="@+id/tv_nombre1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="70dp"
-            android:text="Segundo Nombre:"
-            android:textColor="@color/principal"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PrimerNombre" />
-
-        <TextView
-            android:id="@+id/SegundoNombre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="70dp"
-            android:text="Carlos"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSegundoNombre" />
-
-
-        <TextView
-            android:id="@+id/tvPrimerApellido"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Primer Apellido:"
-            android:textColor="@color/principal"
+            android:text="Nombre1 Nombre2"
+            android:textColor="@color/texto"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SegundoNombre" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/PrimerApellido"
-            android:layout_width="0dp"
+            android:id="@+id/tvLabelCedula11"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
-            android:text="Gonzáles"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrimerApellido" />
+            android:fontFamily="sans-serif-light"
+            android:text="Apellidos:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tvSegundoApellido"
-            android:layout_width="0dp"
+            android:id="@+id/tv_apellido1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="70dp"
-            android:text="Segundo Apellido:"
-            android:textColor="@color/principal"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Apellido1 Apellido2"
+            android:textColor="@color/texto"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PrimerApellido" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/SegundoApellido"
-            android:layout_width="0dp"
+            android:id="@+id/tvLabelCedula10"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
-            android:text="Rodríguez"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSegundoApellido" />
+            android:fontFamily="sans-serif-light"
+            android:text="Fecha de nacimiento:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tvTelefono"
-            android:layout_width="0dp"
+            android:id="@+id/tv_fecha_nac"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="yyyy-MM-dd"
+            android:textColor="@color/texto"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLabelCedula9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:fontFamily="sans-serif-light"
             android:text="Teléfono:"
-            android:textColor="@color/principal"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tc_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="0000000000"
+            android:textColor="@color/texto"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SegundoApellido" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/Telefono"
-            android:layout_width="0dp"
+            android:id="@+id/tvLabelCedula8"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
-            android:text="0968079219"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+            android:fontFamily="sans-serif-light"
+            android:text="Correo electrónico:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tvDireccion"
-            android:layout_width="0dp"
+            android:id="@+id/tv_correo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="email@gmail.com"
+            android:textColor="@color/texto"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLabelCedula7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:fontFamily="sans-serif-light"
             android:text="Dirección:"
-            android:textColor="@color/principal"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Telefono" />
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/Direccion"
-            android:layout_width="0dp"
+            android:id="@+id/tv_direccion"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginBottom="36dp"
-            android:text="Ricaurte"
-            android:textColor="@color/principal"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDireccion"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Dirección"
+            android:textColor="@color/texto"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvLabelCedula6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Fecha de registro:"
+            android:textColor="@color/secundario"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_fecha_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="0106915663"
+            android:textColor="@color/texto"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 </ScrollView>

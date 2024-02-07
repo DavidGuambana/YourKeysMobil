@@ -24,7 +24,7 @@ public class serListar {
         this.context = context;
     }
     public void listar(String url, final ServiceCallback callback) {
-        JsonArrayRequest request = new JsonArrayRequest(new URL().endPoint+url, new Response.Listener<JSONArray>() {
+        JsonArrayRequest request = new JsonArrayRequest(new RUTA().endPoint+url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 if (response.length() > 0) {

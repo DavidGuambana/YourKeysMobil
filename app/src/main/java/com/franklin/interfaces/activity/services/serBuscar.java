@@ -2,15 +2,12 @@ package com.franklin.interfaces.activity.services;
 
 import android.content.Context;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class serBuscar {
@@ -27,7 +24,7 @@ public class serBuscar {
         }
 
         public void buscar(String url, final ServiceCallback callback) {
-            JsonObjectRequest request = new JsonObjectRequest(new URL().endPoint+url, null,
+            JsonObjectRequest request = new JsonObjectRequest(new RUTA().endPoint+url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

@@ -1,8 +1,10 @@
 package com.franklin.interfaces.activity.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Auto implements Serializable {
+
     private int id_auto;
     private String matricula;
     private int id_modelo;

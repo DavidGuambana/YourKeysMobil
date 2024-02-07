@@ -7,6 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -23,12 +24,17 @@ public class serEliminar {
         this.context = context;
     }
 
-    public void crear(String url, JSONObject jsonBody, final serEliminar.ServiceCallback callback) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
-                new Response.Listener<JSONObject>() {
+
+    public void eliminar(String url, final ServiceCallback callback) {
+        StringRequest request = new StringRequest(Request.Method.DELETE, new RUTA().endPoint + url,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        callback.onSuccess(response);
+                    public void onResponse(String response) {
+                        if (response.equals("")) {
+                            callback.onSuccess("Eliminación exitosa");
+                        } else {
+                            callback.onError("Respuesta inesperada: " + response);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -37,7 +43,6 @@ public class serEliminar {
                         callback.onError(error.getMessage());
                     }
                 });
-
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
     }

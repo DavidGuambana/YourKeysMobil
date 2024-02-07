@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/r1_r"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/secundario"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/r2_r"
+        android:layout_width="27dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/secundario"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/r3_r"
+        android:layout_width="23dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/secundario"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/r4_r"
+        android:layout_width="3dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="editar"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/secundario"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/r5_r"
+        android:layout_width="13dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="cancelar"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="#FFA726"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</TableRow>

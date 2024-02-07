@@ -35,6 +35,10 @@
             android:exported="false"
             android:label="@string/title_activity_inicio"
             android:theme="@style/Theme.Interfaces.NoActionBar" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

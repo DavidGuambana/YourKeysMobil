@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.franklin.interfaces.MainActivity;
 import com.franklin.interfaces.R;
 import com.franklin.interfaces.activity.models.Persona;
-import com.franklin.interfaces.activity.ui.autos.AutosAdapter;
+import com.franklin.interfaces.activity.services.RUTA;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -22,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.franklin.interfaces.databinding.ActivityInicioBinding;
+import com.squareup.picasso.Picasso;
 
 public class InicioActivity extends AppCompatActivity {
 
@@ -48,7 +49,7 @@ public class InicioActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_perfil, R.id.nav_autos)
+                R.id.nav_home, R.id.nav_perfil, R.id.nav_autos, R.id.nav_historial)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_inicio);
@@ -74,10 +75,11 @@ public class InicioActivity extends AppCompatActivity {
             name.setText(persona.getNombre1()+" "+persona.getApellido1()+"");
             username.setText("("+persona.getUsuario().getUsername()+")");
             email.setText(persona.getCorreo()+"");
-            //cargarImagenConGlide(persona.getUrl_imagen(),imagen);
+            Picasso.get()
+                    .load(RUTA.getUrlFoto(persona.getUrl_imagen()))
+                    .error(R.drawable.perfil)
+                    .into(imagen);
         }
-
-
     }
 
     public void salir(){
@@ -98,12 +100,4 @@ public class InicioActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    private void cargarImagenConGlide(String urlImagen, ImageView imageView) {
-        Glide.with(this)
-                .load((urlImagen != null && !urlImagen.isEmpty()) ? urlImagen : null)
-                .dontTransform()
-                .into(imageView);
-    }
-
 }

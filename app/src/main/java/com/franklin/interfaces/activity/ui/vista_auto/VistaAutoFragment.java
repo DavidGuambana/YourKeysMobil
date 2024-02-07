@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.franklin.interfaces.R;
 import com.franklin.interfaces.activity.models.Auto;
+import com.franklin.interfaces.activity.services.RUTA;
 import com.squareup.picasso.Picasso;
 
 public class VistaAutoFragment extends Fragment {
@@ -66,9 +68,8 @@ public class VistaAutoFragment extends Fragment {
         potencia.setText(auto.getPotencia()+" hp");
         capacidad.setText(auto.getCapacidad()+" personas");
         categoria.setText(auto.getCategoria().getNombre()+"");
-
         Picasso.get()
-                .load(auto.getUrl_image())
+                .load(RUTA.getUrlFoto(auto.getUrl_image()))
                 .error(R.drawable.aveo)
                 .into(imagen);
     }

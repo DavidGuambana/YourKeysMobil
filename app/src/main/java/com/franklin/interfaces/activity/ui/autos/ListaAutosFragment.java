@@ -61,7 +61,7 @@ public class ListaAutosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (isAdded()){
-            context = getActivity().getApplicationContext();
+            context = getContext();
             RecyclerView rv_autos = view.findViewById(R.id.recyclerAutos);
             rv_autos.setHasFixedSize(true);
             LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -70,14 +70,8 @@ public class ListaAutosFragment extends Fragment {
             rv_autos.setAdapter(mAdapter);
             service = new serListar(context);
             getModelos();
-            getMarcas();
-            getCategorias();
-            getAutos();
         }
     }
-
-
-
     public void getAutos(){
         service.listar("autos", new serListar.ServiceCallback() {
             @Override
@@ -91,12 +85,13 @@ public class ListaAutosFragment extends Fragment {
     }
 
     public void listarAutos(JSONArray response) {
-        try {
-            if (response.length() > 0) {
-                autos = new ArrayList<>();
-                for (int i = 0; i < response.length(); i++) {
+        if (response.length() > 0) {
+            autos = new ArrayList<>();
+            Auto auto;
+            for (int i = 0; i < response.length(); i++) {
+                try{
                     JSONObject objAuto = response.getJSONObject(i);
-                    Auto auto = new Auto();
+                    auto = new Auto();
                     auto.setId_auto(objAuto.getInt("id_auto"));
                     auto.setMatricula(objAuto.getString("matricula"));
                     auto.setId_modelo(objAuto.getInt("id_modelo"));
@@ -111,11 +106,10 @@ public class ListaAutosFragment extends Fragment {
                     auto.setMarca(getMarca(auto.getModelo().getId_marca()));
                     auto.setCategoria(getCategoria(auto.getId_categoria()));
                     autos.add(auto);
+                }catch (Exception e){
                 }
-                mAdapter.setDataSet(autos);
             }
-        } catch (JSONException e) {
-            Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();
+            mAdapter.setDataSet(autos);
         }
     }
 
@@ -135,6 +129,7 @@ public class ListaAutosFragment extends Fragment {
                             modelo.setId_marca(objMod.getInt("id_marca"));
                             modelos.add(modelo);
                         }
+                        getMarcas();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();
@@ -161,6 +156,7 @@ public class ListaAutosFragment extends Fragment {
                             marca.setNombre(objMar.getString("nombre"));
                             marcas.add(marca);
                         }
+                        getCategorias();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();
@@ -186,6 +182,7 @@ public class ListaAutosFragment extends Fragment {
                             categoria.setNombre(objCat.getString("nombre"));
                             categorias.add(categoria);
                         }
+                        getAutos();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();

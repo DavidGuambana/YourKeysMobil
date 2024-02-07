@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/c1_r"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/principal"
+        android:backgroundTint="@color/principal"
+        android:text="Auto"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/c2_r"
+        android:layout_width="27dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/principal"
+        android:backgroundTint="@color/principal"
+        android:text="Total"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/c3_r"
+        android:layout_width="23dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/principal"
+        android:backgroundTint="@color/principal"
+        android:text="Fecha"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/c4_r"
+        android:layout_width="3dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/principal"
+        android:text="Editar"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/c5_r"
+        android:layout_width="13dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/principal"
+        android:text="Cancelar"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</TableRow>

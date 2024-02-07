@@ -17,7 +17,6 @@ import com.franklin.interfaces.activity.models.Devolucion;
 import com.franklin.interfaces.activity.models.Persona;
 import com.franklin.interfaces.activity.models.Usuario;
 import com.franklin.interfaces.activity.models.Usuario_Rol;
-import com.franklin.interfaces.activity.services.serCrear;
 import com.franklin.interfaces.activity.services.serListar;
 import com.franklin.interfaces.activity.ui.register.Register;
 import com.franklin.interfaces.activity.utils.FECHA;
@@ -41,16 +40,12 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         service = new serListar(context);
-
         //atributos del login:
         username = findViewById(R.id.txtUsername);
         password = findViewById(R.id.txtPassword);
-
         Button btnIngresar = findViewById(R.id.btnIngresar);
         btnIngresar.setOnClickListener(l-> loguear());
-
         Button btnRegister = findViewById(R.id.btnRegistrarse);
         btnRegister.setOnClickListener(l-> abrirRegistro());
     }
@@ -84,7 +79,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(context, "¡Usuario no encontrado!", Toast.LENGTH_LONG).show();
                         }
                     } catch (Exception e){
-                        Toast.makeText(context,e.getMessage() , Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -147,7 +142,7 @@ public class Login extends AppCompatActivity {
                                 alquiler.setId_cliente(objAlq.getInt("id_cliente"));
                                 alquiler.setId_auto(objAlq.getInt("id_auto"));
                                 alquiler.setId_proteccion(objAlq.getInt("id_proteccion"));
-                                alquiler.setId_empleado(objAlq.getInt("id_empleado"));
+                                alquiler.setId_empleado(objAlq.isNull("id_empleado") ? 0 : objAlq.getInt("id_empleado"));
                                 alquiler.setFecha_ini(fecha.stringToDate(objAlq.getString("fecha_ini")));
                                 alquiler.setFecha_fin(fecha.stringToDate(objAlq.getString("fecha_fin")));
                                 alquiler.setPrecio_auto(objAlq.getDouble("precio_auto"));
@@ -198,7 +193,6 @@ public class Login extends AppCompatActivity {
                                 usuario_rol.setId_usuario_rol(objUserRol.getInt("id_usuario_rol"));
                                 usuario_rol.setId_usuario(objUserRol.getInt("id_usuario"));
                                 usuario_rol.setId_rol(objUserRol.getInt("id_rol"));
-
                                 users_roles.add(usuario_rol);
                             }
                             persona.setUsuarios_roles(users_roles);

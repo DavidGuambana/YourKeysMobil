@@ -24,6 +24,7 @@ public class Alquiler implements Serializable {
     private boolean reservado;
     private Date fecha_res = new Date();
     private Date fecha_reg = new Date();
+    private Auto auto;
 
     public int getId_alquiler() {
         return id_alquiler;
@@ -143,6 +144,14 @@ public class Alquiler implements Serializable {
 
     public void setFecha_reg(Date fecha_reg) {
         this.fecha_reg = fecha_reg;
+    }
+
+    public Auto getAuto() {
+        return auto;
+    }
+
+    public void setAuto(Auto auto) {
+        this.auto = auto;
     }
 
     @Override

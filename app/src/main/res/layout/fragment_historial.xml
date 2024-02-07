@@ -10,56 +10,79 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="45dp" />
-
         <TextView
             android:id="@+id/titulo1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif-black"
-            android:text="Mis últimas reservas"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:text="Mis reservas"
+            android:textColor="@color/secundario"
+            android:textSize="25sp" />
 
-        <Space
-            android:id="@+id/espaciador"
+        <TextView
+            android:id="@+id/tvResulRes"
             android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="Resultados: 0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/principal"
+            android:textSize="15sp"
+            tools:layout_marginStart="20dp" />
 
         <TableLayout
             android:id="@+id/tlReservas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <!-- Contenido de la tabla -->
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp">
+
         </TableLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="45dp" />
+            android:layout_height="25dp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif-black"
-            android:text="Mis alquileres finalizados"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:text="Mis alquileres"
+            android:textAlignment="textStart"
+            android:textColor="@color/secundario"
+            android:textSize="25sp" />
 
-        <Space
-            android:id="@+id/espaciador2"
+        <TextView
+            android:id="@+id/tvResulAlq"
             android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="Resultados: 0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/principal"
+            android:textSize="15sp"
+            tools:layout_marginStart="20dp" />
 
         <TableLayout
             android:id="@+id/tlAlquileres"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="50dp">
             <!-- Contenido de la tabla -->
         </TableLayout>
     </LinearLayout>
 </ScrollView>
-
 

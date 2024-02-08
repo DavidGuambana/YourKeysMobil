@@ -1,7 +1,10 @@
 package com.franklin.interfaces.activity.services;
 
 public class RUTA {
-    public static String endPoint="http://192.168.252.23:8080/api/";
+    //ariel:
+    public static String endPoint="http://192.168.252.11:8080/api/";
+    //jossias:
+    //public static String endPoint="http://192.168.126.78:8080/api/";
 
     public static String getUrlFoto(String url) {
         String[] partes = url.split("/");
